@@ -17,17 +17,17 @@ public class Programa {
 
 		Scanner leia = new Scanner(System.in);
 		PartidaXadrez partidaXadrez = new PartidaXadrez();
-		List <PecaXadrez> capturada = new ArrayList<>();
+		List<PecaXadrez> capturada = new ArrayList<>();
 
-		while (true) {
+		while (!partidaXadrez.getCheckMate()) {
 			try {
 				UI.limparTela();
 				UI.printPartida(partidaXadrez, capturada);
 				System.out.println();
 				System.out.print("Origem: ");
 				PosicaoXadrez origem = UI.lerPosicaoXadrez(leia);
-				
-				boolean [][] possiveisMovimentos = partidaXadrez.movimentosPossiveis(origem);
+
+				boolean[][] possiveisMovimentos = partidaXadrez.movimentosPossiveis(origem);
 				UI.limparTela();
 				UI.printTabuleiro(partidaXadrez.getPecas(), possiveisMovimentos);
 
@@ -36,11 +36,11 @@ public class Programa {
 				PosicaoXadrez destino = UI.lerPosicaoXadrez(leia);
 
 				PecaXadrez pecaCapturada = partidaXadrez.moverPecaXadrez(origem, destino);
-				
+
 				if (pecaCapturada != null) {
 					capturada.add(pecaCapturada);
 				}
-				
+
 			} catch (ExcecaoXadrez x) {
 				System.out.println(x.getMessage());
 				leia.nextLine();
@@ -49,7 +49,8 @@ public class Programa {
 				leia.nextLine();
 			}
 		}
-
+		UI.limparTela();
+		UI.printPartida(partidaXadrez, capturada);
 	}
 
 }
