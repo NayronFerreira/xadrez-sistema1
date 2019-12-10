@@ -62,10 +62,10 @@ public class UI {
 			if (partidaXadrez.getCheck()) {
 				System.out.println("CHECK");
 			}
-		}
+		} 
 		else {
 			System.out.println("CHECKMATE!");
-			System.out.println("Ganhandor: "+ partidaXadrez.getJogadorDaVez());
+			System.out.println("Ganhandor: " + partidaXadrez.getJogadorDaVez());
 		}
 	}
 
